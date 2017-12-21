@@ -12,9 +12,10 @@ function random_color()
 
 $(document).ready(function(){
    $('#large_box').click(function(){
-     $('#large_box').css('background-color', random_color());
-     $('.side_box').css('background-color', random_color());
-     $('.middle_box').css('background-color', random_color());
+     $('#large_box').children('.side_box').css('background-color', random_color());
+     $('#large_box').children('.middle_box').css('background-color', random_color());
+     $('.side_box').parent().css('background-color', random_color());
+     // $('.middle_box').css('background-color', random_color());
       // alert('you clicked the big box!');
 
    })
@@ -24,7 +25,7 @@ $(document).ready(function(){
    })
    $('.middle_box').click(function(event){
       event.stopPropagation();
-      $('#large_box').css('background-color', random_color());
+      $(this).parent().css('background-color', random_color());
 
    })
 });
